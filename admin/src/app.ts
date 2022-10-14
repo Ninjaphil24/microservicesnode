@@ -1,14 +1,16 @@
 import * as express from 'express'
 import * as cors from 'cors'
-// import exp = require('constants')
+import { createConnection } from 'typeorm'
 
-const app = express()
+createConnection().then(db=>{
+    const app = express()
 
-app.use(cors({
-    origin: ['http://localhost:4200']
-}))
+    app.use(cors({
+        origin: ['http://localhost:4200']
+    }))
 
-app.use(express.json())
+    app.use(express.json())
 
-console.log('Listening to port: 8000')
-app.listen(port:8000)
+    console.log('Listening to port: 8000')
+    app.listen(8000)
+})
